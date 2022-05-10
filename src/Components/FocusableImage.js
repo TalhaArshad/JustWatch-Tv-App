@@ -13,6 +13,7 @@ const FocusableImage = ({imageSrc, title}) => {
     }}
     onBlur = {()=>{
         setIsFocused(false)
+        setShouldDisplayTitle(false)
     }}
     onPress = {()=>{
         setShouldDisplayTitle(true)
