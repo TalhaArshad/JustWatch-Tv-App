@@ -1,5 +1,5 @@
 import React, {useState, useImperativeHandle} from 'react';
-import {TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, Image, StyleSheet, Platform} from 'react-native';
 
 const FocusableImage = React.forwardRef((props, ref) => {
   const {imageSrc, title} = props;
@@ -25,6 +25,7 @@ const FocusableImage = React.forwardRef((props, ref) => {
         setShouldDisplayTitle(true);
       }}>
       <Image
+      resizeMode= "contain"
         source={imageSrc}
         style={[styles.image, isFocused && styles.frame]}></Image>
       <Text style={styles.title}>{shouldDisplayTitle ? title : ''}</Text>
@@ -34,23 +35,23 @@ const FocusableImage = React.forwardRef((props, ref) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 400,
-    height: 600,
+    width: Platform.isTVOS ? 400: 150,
+    height: Platform.isTVOS ? 600: 280,
     alignSelf: 'center',
     alignItems: 'center',
-    margin: 60,
+    margin: 60
   },
   frame: {
     borderColor: 'white',
   },
   image: {
-    width: 380,
-    height: 500,
-    borderWidth: 10,
+    width: Platform.isTVOS ? 380: 250,
+    height: Platform.isTVOS ? 500: 310,
+    borderWidth: Platform.isTVOS ? 10: 5,
   },
   title: {
-    fontSize: 30,
-    marginTop: 20,
+    fontSize: Platform.isTVOS ? 30: 20,
+    marginTop: Platform.isTVOS ? 20: 12,
     color: 'white',
   },
 });

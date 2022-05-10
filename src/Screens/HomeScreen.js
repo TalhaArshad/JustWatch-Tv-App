@@ -22,6 +22,7 @@ const HomeScreen = () => {
       'hardwareBackPress',
       function () {
         backPressRef.current.backButtonPressed();
+        return true
       },
     );
 
